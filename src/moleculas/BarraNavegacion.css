@@ -203,7 +203,8 @@
     opacity: 0;
     transform: translate(-50%, -0.75rem);
     pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    clip-path: inset(0 0 100% 0);
+    transition: opacity 0.25s ease, transform 0.25s ease, clip-path 0.35s ease;
     z-index: 15;
     max-height: min(70vh, 32rem);
     overflow-y: auto;
@@ -237,8 +238,9 @@
     position: absolute;
     inset: -30% 0 60%;
     background: linear-gradient(120deg, transparent, rgba(75, 182, 255, 0.3), transparent);
-    opacity: 0.45;
-    animation: barra-scan 6s linear infinite;
+    opacity: 0;
+    transform: translateY(-120%);
+    animation: none;
     pointer-events: none;
   }
 
@@ -248,9 +250,20 @@
   }
 
   .barra--abierta .barra__panel {
-    opacity: 1;
+    opacity: 2;
     transform: translate(-50%, 0);
     pointer-events: auto;
+    clip-path: inset(0 0 0 0);
+  }
+
+  .barra--abierta .barra__panel::after {
+    opacity: 0.6;
+    animation: barra-scan 1s ease-out both;
+  }
+
+  .barra:not(.barra--abierta) .barra__panel::after {
+    opacity: 0.45;
+    animation: barra-scan-out 0.5s ease-in both;
   }
 
   .barra__lista {
@@ -301,5 +314,16 @@
   }
   100% {
     transform: translateY(120%);
+  }
+}
+
+@keyframes barra-scan-out {
+  0% {
+    opacity: 0.5;
+    transform: translateY(120%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120%);
   }
 }
