@@ -19,6 +19,10 @@
   overflow: hidden;
 }
 
+.card3d__inner {
+  display: contents;
+}
+
 /* Capa de vidrio */
 .card3d__glass {
   transform-style: preserve-3d;
@@ -282,18 +286,82 @@
 @media (max-width: 40rem) {
   .card3d-parent {
     width: min(100%, 18.125rem);
+    height: auto;
+    perspective: none;
+  }
+
+  .card3d {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    transform: none;
+    transform-style: flat;
+    height: auto;
+    padding: 0.2rem;
+    border-radius: 1.4rem;
+    background-color: #1a1a1a;
+    border: 0.08rem solid #1a1a1a;
+    box-shadow: none;
+  }
+
+  .card3d__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #1a1a1a;
+    border-radius: 1.2rem;
+    padding: 1.4rem;
+    transition: transform 0.2s ease;
+  }
+
+  .card3d:hover .card3d__inner {
+    transform: scale(0.98);
+  }
+
+  .card3d__logo,
+  .card3d__glass {
+    display: none;
+  }
+
+  .card3d-parent:hover .card3d,
+  .card3d-parent:hover .card3d .card3d__social-button,
+  .card3d-parent:hover .card3d .card3d__circle--2,
+  .card3d-parent:hover .card3d .card3d__circle--3,
+  .card3d-parent:hover .card3d .card3d__circle--4,
+  .card3d-parent:hover .card3d .card3d__circle--5 {
+    transform: none;
+    background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+    border-color: transparent;
+    box-shadow: 0 0 1.875rem 0.0625rem rgba(0, 255, 117, 0.3);
   }
 
   .card3d__content {
-    padding: 5rem 2.4rem 0 1.4rem;
+    padding: 0;
+    transform: none;
+  }
+
+  .card3d__bottom {
+    position: static;
+    padding: 0.8rem 0 0;
+    transform: none;
+  }
+
+  .card3d__more {
+    width: auto;
   }
 
   .card3d__title {
+    color: #e6f0ff;
     font-size: 1.1rem;
   }
 
   .card3d__text {
-    font-size: 0.85rem;
+    color: rgba(230, 240, 255, 0.7);
+    font-size: 0.9rem;
+  }
+
+  .card3d__more-button,
+  .card3d__more-icon {
+    color: #00ffff;
+    stroke: #00ffff;
   }
 }
 

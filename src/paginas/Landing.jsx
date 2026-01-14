@@ -94,7 +94,7 @@ const solucionesPropias = [
   },
 ]
 
-const totalEstrellas = 24
+const totalEstrellas = 30
 
 function numeroAleatorio(minimo, maximo) {
   return Math.random() * (maximo - minimo) + minimo
