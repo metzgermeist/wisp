@@ -236,8 +236,15 @@
   .barra__panel::after {
     content: '';
     position: absolute;
-    inset: -30% 0 60%;
-    background: linear-gradient(120deg, transparent, rgba(75, 182, 255, 0.3), transparent);
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(75, 182, 255, 0) 45%,
+      rgba(75, 182, 255, 0.45) 50%,
+      rgba(75, 182, 255, 0) 55%,
+      transparent 100%
+    );
     opacity: 0;
     transform: translateY(-120%);
     animation: none;
