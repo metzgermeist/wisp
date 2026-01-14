@@ -139,6 +139,10 @@
     animation: fall var(--fall-duration) var(--fall-delay) linear infinite;
     opacity: 0.5;
   }
+
+  .landing__fondo-estrellas .stars {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
