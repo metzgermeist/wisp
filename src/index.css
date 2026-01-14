@@ -44,6 +44,10 @@ body {
   overflow-x: hidden;
 }
 
+body.menu-abierto {
+  overflow: hidden;
+}
+
 /* Scroll suave por defecto */
 html {
   scroll-behavior: smooth;

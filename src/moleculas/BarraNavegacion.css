@@ -1,3 +1,4 @@
+/* === Desktop / base === */
 /* Contenedor fijo de navegacion */
 .barra {
   position: fixed;
@@ -17,6 +18,12 @@
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1rem clamp(1.6rem, 4vw, 4rem);
+  position: relative;
+}
+
+/* Contenedor del menu */
+.barra__panel {
+  display: contents;
 }
 
 /* Lista de enlaces */
@@ -108,22 +115,191 @@
   opacity: 0.7;
 }
 
-/* Ajustes responsive */
+/* Boton para abrir menu mobile */
+.barra__toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.9rem;
+  border: 0.08rem solid rgba(75, 182, 255, 0.4);
+  background: rgba(4, 17, 36, 0.8);
+  color: #b9d0ee;
+  cursor: pointer;
+  position: relative;
+  z-index: 20;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.barra__toggle:hover {
+  transform: translateY(-0.05rem);
+  box-shadow: 0 0 1.4rem rgba(75, 182, 255, 0.25);
+}
+
+.barra__toggle-line {
+  position: absolute;
+  width: 1.4rem;
+  height: 0.12rem;
+  background: currentColor;
+  border-radius: 999px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.barra__toggle-line:nth-child(1) {
+  transform: translateY(-0.4rem);
+}
+
+.barra__toggle-line:nth-child(2) {
+  transform: translateY(0);
+}
+
+.barra__toggle-line:nth-child(3) {
+  transform: translateY(0.4rem);
+}
+
+.barra--abierta .barra__toggle-line:nth-child(1) {
+  transform: translateY(0) rotate(45deg);
+}
+
+.barra--abierta .barra__toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+.barra--abierta .barra__toggle-line:nth-child(3) {
+  transform: translateY(0) rotate(-45deg);
+}
+
+/* === Mobile (<= 50rem) === */
 @media (max-width: 50rem) {
   .barra__nav {
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem;
+    justify-content: space-between;
+    row-gap: 0.8rem;
+  }
+
+  .barra__toggle {
+    display: inline-flex;
+  }
+
+  .barra__panel {
+    display: flex;
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    left: 50%;
+    width: min(100% - 2rem, 28rem);
+    padding: 1.2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    background: radial-gradient(circle at 18% 18%, rgba(75, 182, 255, 0.2), transparent 45%),
+      radial-gradient(circle at 82% 22%, rgba(233, 82, 218, 0.16), transparent 45%),
+      linear-gradient(160deg, rgba(4, 10, 22, 0.98), rgba(7, 18, 36, 0.95));
+    backdrop-filter: blur(1.2rem);
+    border: 0.08rem solid rgba(75, 182, 255, 0.25);
+    border-radius: 1.2rem;
+    box-shadow: 0 1.8rem 3.2rem rgba(4, 17, 36, 0.6);
+    opacity: 0;
+    transform: translate(-50%, -0.75rem);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 15;
+    max-height: min(70vh, 32rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .barra__panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        90deg,
+        rgba(75, 182, 255, 0.12) 0,
+        rgba(75, 182, 255, 0.12) 1px,
+        transparent 1px,
+        transparent 26px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(75, 182, 255, 0.12) 0,
+        rgba(75, 182, 255, 0.12) 1px,
+        transparent 1px,
+        transparent 26px
+      );
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .barra__panel::after {
+    content: '';
+    position: absolute;
+    inset: -30% 0 60%;
+    background: linear-gradient(120deg, transparent, rgba(75, 182, 255, 0.3), transparent);
+    opacity: 0.45;
+    animation: barra-scan 6s linear infinite;
+    pointer-events: none;
+  }
+
+  .barra__panel > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .barra--abierta .barra__panel {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
   }
 
   .barra__lista {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0.3rem 0.4rem;
+    flex-direction: column;
+    width: min(100%, 22rem);
+    padding: 0;
+    gap: 0.75rem;
+    background: transparent;
+    border: none;
+    box-shadow: none;
   }
 
-  .barra__link--active::before,
-  .barra__link--active::after {
+  .barra__lista .lista__item {
+    width: 100%;
+  }
+
+  .barra__link {
+    width: 100%;
+    justify-content: center;
+    padding: 0.9rem 1.1rem;
+    font-size: 1.05rem;
+    background: rgba(6, 16, 34, 0.72);
+    border: 0.08rem solid rgba(75, 182, 255, 0.35);
+    border-radius: 0.9rem;
+    box-shadow: 0 1.2rem 2.2rem rgba(4, 17, 36, 0.55);
+  }
+
+  .barra__link::before,
+  .barra__link::after {
     content: none;
+  }
+
+  .barra__cta {
+    width: min(100%, 22rem);
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .barra__panel::after {
+    animation: none;
+  }
+}
+
+@keyframes barra-scan {
+  0% {
+    transform: translateY(-120%);
+  }
+  100% {
+    transform: translateY(120%);
   }
 }

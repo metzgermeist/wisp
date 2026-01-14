@@ -1,4 +1,3 @@
-import Boton from '../atomicos/Boton.jsx'
 import BotonSuper from '../atomicos/BotonSuper.jsx'
 import './Hero.css'
 
@@ -21,9 +20,7 @@ function SeccionHero({ imagen }) {
         {/* Llamadas a la accion */}
         <footer className="hero__ctas">
           <BotonSuper enlace="#soluciones">Ver Soluciones</BotonSuper>
-          <Boton enlace="#proyectos" variante="ghost" tamano="lg">
-            Proyectos a Medida
-          </Boton>
+          <BotonSuper enlace="#proyectos">Proyectos a Medida</BotonSuper>
         </footer>
       </article>
     </section>

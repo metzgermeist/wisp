@@ -1,3 +1,4 @@
+/* === Desktop / base === */
 /* Contenedor principal del hero */
 .hero {
   display: flex;
@@ -82,6 +83,25 @@
 
   .hero__media {
     width: min(100%, 40rem);
+  }
+}
+
+/* === Mobile (<= 40rem) === */
+@media (max-width: 40rem) {
+  .hero {
+    min-height: 100vh;
+    padding-top: clamp(5rem, 12vw, 7rem);
+    padding-bottom: clamp(3rem, 10vw, 4.5rem);
+    justify-content: center;
+  }
+
+  .hero__ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__ctas .boton-super {
+    width: 100%;
   }
 }
 

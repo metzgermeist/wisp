@@ -208,6 +208,34 @@ function PaginaLanding() {
     }
   }
 
+  // Activa o pausa las estrellas segun visibilidad.
+  function activarEstrellasPorScroll() {
+    const seccion = document.querySelector('.landing__fondo-estrellas')
+    if (!seccion) {
+      return undefined
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      seccion.classList.add('landing__fondo-estrellas--activo')
+      return undefined
+    }
+
+    const observador = new IntersectionObserver(
+      (entradas) => {
+        for (let indice = 0; indice < entradas.length; indice += 1) {
+          seccion.classList.toggle('landing__fondo-estrellas--activo', entradas[indice].isIntersecting)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    observador.observe(seccion)
+
+    return function limpiarObservador() {
+      observador.disconnect()
+    }
+  }
+
   // Activa un parallax suave en la imagen del hero.
   function activarParallaxHero() {
     const mediosReducidos = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -226,7 +254,7 @@ function PaginaLanding() {
 
     // Agrupa el repaint en RAF para suavidad.
     function ejecutarAnimacion() {
-      idAnimacion = null
+      idAnimacion = null  
       actualizarDesplazamientoHero()
     }
 
@@ -255,6 +283,7 @@ function PaginaLanding() {
   // Activa observadores y efectos de scroll.
   useEffect(activarNavegacionPorScroll, [])
   useEffect(activarReveladoPorScroll, [])
+  useEffect(activarEstrellasPorScroll, [])
   useEffect(activarParallaxHero, [])
 
   return (

@@ -100,6 +100,7 @@
   will-change: transform, opacity;
   animation: fall var(--fall-duration) var(--fall-delay) linear infinite,
     tail-fade var(--fall-duration) var(--fall-delay) ease-out infinite;
+  animation-play-state: paused;
 }
 
 .landing__fondo-estrellas .star::before,
@@ -113,6 +114,7 @@
   background: linear-gradient(45deg, transparent, currentColor, transparent);
   border-radius: inherit;
   animation: blink 2s linear infinite;
+  animation-play-state: paused;
 }
 
 .landing__fondo-estrellas .star::before {
@@ -121,6 +123,15 @@
 
 .landing__fondo-estrellas .star::after {
   transform: rotate(-45deg);
+}
+
+.landing__fondo-estrellas--activo .star {
+  animation-play-state: running;
+}
+
+.landing__fondo-estrellas--activo .star::before,
+.landing__fondo-estrellas--activo .star::after {
+  animation-play-state: running;
 }
 
 @media (max-width: 750px) {
