@@ -1,0 +1,99 @@
+/* Estilos globales y variables base */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+/* Tokens globales de color, tipografia y sombras */
+:root {
+  color-scheme: dark;
+  font-family: 'Space Grotesk', 'Manrope', sans-serif;
+  background-color: #050913;
+  color: #e6f0ff;
+  --color-bg: #050913;
+  --color-surface: rgba(10, 18, 40, 0.82);
+  --color-surface-strong: rgba(14, 26, 52, 0.95);
+  --color-accent: #4bb6ff;
+  --color-accent-strong: #3a7cff;
+  --color-accent-soft: rgba(75, 182, 255, 0.18);
+  --color-text: #e6f0ff;
+  --color-muted: #b4c2de;
+  --color-stroke: rgba(154, 185, 255, 0.2);
+  --radius-lg: 1.6rem;
+  --radius-md: 1rem;
+  --radius-pill: 99rem;
+  --shadow-soft: 0 2rem 5rem rgba(8, 16, 32, 0.5);
+  --shadow-glow: 0 0 3rem rgba(75, 182, 255, 0.3);
+  --transition-base: 0.3s ease;
+}
+
+/* Reset de box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Base del documento */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: radial-gradient(circle at 18% 20%, rgba(129, 11, 153, 0.849), transparent 45%),
+    radial-gradient(circle at 82% 12%, rgba(107, 148, 207, 0.2), transparent 40%),
+    radial-gradient(circle at 70% 85%, rgb(68, 137, 166), transparent 50%),
+    linear-gradient(160deg, #0c141a 0%, #0b1a2e 55%, #0c141a 100%);
+  color: var(--color-text);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Scroll suave por defecto */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Imagenes fluidas */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Enlaces heredados */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Tipografia para controles */
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+/* Fondo transparente en campos */
+input,
+textarea {
+  background: transparent;
+}
+
+/* Seleccion de texto */
+::selection {
+  background: rgba(75, 182, 255, 0.35);
+  color: #ffffff;
+}
+
+/* Foco visible accesible */
+:focus-visible {
+  outline: 0.15rem solid rgba(75, 182, 255, 0.8);
+  outline-offset: 0.2rem;
+}
+
+/* Respeta preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Contenedor raiz */
+#root {
+  min-height: 100vh;
+}

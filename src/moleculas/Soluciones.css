@@ -1,0 +1,67 @@
+/* Contenedor de la seccion soluciones */
+.soluciones {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 72rem);
+  margin: 0 auto;
+  background-image: radial-gradient(circle at 18% 12%, rgba(185, 208, 238, 0.075), transparent 45%),
+    radial-gradient(circle at 82% 85%, rgba(68, 137, 166, 0.25), transparent 55%),
+    linear-gradient(155deg, #0c141a 0%, #0b1a2ec4 55%, #0c141a 100%);
+  border-radius: var(--radius-lg);
+  border: 0.08rem solid rgba(68, 137, 166, 0.32);
+  box-shadow: 0 1.8rem 3.5rem rgba(4, 17, 36, 0.55), 0 0 1.6rem rgba(185, 208, 238, 0.16),
+    inset 0 0 0 1px rgba(185, 208, 238, 0.05);
+  isolation: isolate;
+}
+
+.soluciones::before {
+  content: '';
+  position: absolute;
+  inset: -18% 28% 60% 28%;
+  background: radial-gradient(circle, rgba(185, 208, 238, 0.2), transparent 70%);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.soluciones > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Encabezado de la seccion */
+.soluciones__encabezado {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Titulo de soluciones */
+.soluciones__titulo {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #b9d0ee;
+}
+
+/* Texto auxiliar */
+.soluciones__texto {
+  margin: 0;
+  color: #6b94cf;
+}
+
+/* Distribucion de cards */
+.soluciones__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+/* Item contenedor de cada card */
+.soluciones__item {
+  flex: 1 1 17rem;
+  display: flex;
+  justify-content: center;
+}

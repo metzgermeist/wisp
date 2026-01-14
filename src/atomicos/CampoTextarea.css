@@ -1,0 +1,10 @@
+/* Variante textarea */
+.campo--textarea {
+  min-height: 100%;
+}
+
+/* Control especifico de textarea */
+.campo__control--textarea {
+  resize: vertical;
+  min-height: 8rem;
+}

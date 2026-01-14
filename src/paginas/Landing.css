@@ -1,0 +1,213 @@
+/* Contenedor principal de la landing */
+.landing {
+  --landing-gap: clamp(2.5rem, 5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--landing-gap);
+  padding: 0 clamp(1.6rem, 4vw, 5rem) clamp(3rem, 6vw, 6rem);
+  background-image: radial-gradient(circle at 20% 20%, rgba(75, 182, 255, 0.2), transparent 35%),
+    radial-gradient(circle at 80% 10%, rgba(126, 94, 255, 0.2), transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(255, 121, 106, 0.15), transparent 40%),
+    linear-gradient(180deg, #050913 0%, #0a1228 45%, #050913 100%);
+  min-height: 100vh;
+}
+
+/* Tramo con fondo de imagen entre soluciones y proyectos */
+.landing__fondo-soluciones {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: calc(-1 * var(--landing-gap));
+  margin-bottom: calc(-1 * var(--landing-gap));
+  display: flex;
+  flex-direction: column;
+  gap: var(--landing-gap);
+  padding: clamp(2rem, 6vw, 4rem) 0;
+  background-image: url('../assets/img/back.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  isolation: isolate;
+}
+
+.landing__fondo-soluciones::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 35%, rgba(5, 12, 26, 0.61), rgba(5, 12, 26, 0.705));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.landing__fondo-soluciones-contenido {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  padding: 0 clamp(1.6rem, 4vw, 5rem);
+}
+
+/* Tramo con fondo estelar desde sobre nosotros */
+.landing__fondo-estrellas {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: clamp(2rem, 6vw, 4rem) 0;
+  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+}
+
+.landing__fondo-contenido {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  padding: 0 clamp(1.6rem, 4vw, 5rem);
+}
+
+.landing__fondo-estrellas .stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  transform: rotate(-45deg);
+  pointer-events: none;
+  z-index: 0;
+  --star-color: #b9d0ee;
+}
+
+.landing__fondo-estrellas .star {
+  --star-tail-length: 6em;
+  --star-tail-height: 2px;
+  --star-width: calc(var(--star-tail-length) / 6);
+  --fall-duration: 9s;
+  --fall-delay: 0s;
+  position: absolute;
+  top: var(--top-offset, 50%);
+  left: 0;
+  width: var(--star-tail-length);
+  height: var(--star-tail-height);
+  color: var(--star-color);
+  background: linear-gradient(45deg, currentColor, transparent);
+  border-radius: 50%;
+  opacity: 0.75;
+  transform: translate3d(104em, 0, 0);
+  will-change: transform, opacity;
+  animation: fall var(--fall-duration) var(--fall-delay) linear infinite,
+    tail-fade var(--fall-duration) var(--fall-delay) ease-out infinite;
+}
+
+.landing__fondo-estrellas .star::before,
+.landing__fondo-estrellas .star::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: calc(var(--star-width) / -2);
+  width: var(--star-width);
+  height: 100%;
+  background: linear-gradient(45deg, transparent, currentColor, transparent);
+  border-radius: inherit;
+  animation: blink 2s linear infinite;
+}
+
+.landing__fondo-estrellas .star::before {
+  transform: rotate(45deg);
+}
+
+.landing__fondo-estrellas .star::after {
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 750px) {
+  .landing__fondo-estrellas .star {
+    animation: fall var(--fall-duration) var(--fall-delay) linear infinite;
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing__fondo-estrellas .star {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translate3d(-30em, 0, 0);
+  }
+}
+
+@keyframes tail-fade {
+  0%,
+  50% {
+    width: var(--star-tail-length);
+    opacity: 1;
+  }
+
+  70%,
+  80% {
+    width: 0;
+    opacity: 0.4;
+  }
+
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Separacion vertical entre secciones */
+.seccion {
+  padding: clamp(2rem, 6vw, 4rem);
+}
+
+/* Ajuste de ancla para scroll */
+section {
+  scroll-margin-top: 6rem;
+}
+
+#inicio {
+  scroll-margin-top: 0;
+}
+
+/* Base para animaciones de entrada */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(1.2rem);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Estado visible al entrar en viewport */
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ajustes para pantallas pequenas */
+@media (max-width: 48rem) {
+  [data-reveal] {
+    transform: translateY(0.7rem);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+}
+
+/* Respeta preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}

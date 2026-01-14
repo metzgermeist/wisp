@@ -1,0 +1,89 @@
+/* Boton con borde animado */
+.boton-super {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(145deg, #0f0f0f, #1c1c1c);
+  border: 0.125rem solid rgba(255, 255, 255, 0.2);
+  border-radius: 6.25rem;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 1.25rem rgba(0, 255, 255, 0.1);
+  backdrop-filter: blur(0.5rem);
+  z-index: 0;
+}
+
+/* Borde giratorio */
+.boton-super::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, #00ffff, #ff00ff, #00ffff);
+  animation: boton-super-rotate 4s linear infinite;
+  z-index: -2;
+}
+
+/* Capa interna para efecto de corte */
+.boton-super::after {
+  content: '';
+  position: absolute;
+  inset: 0.125rem;
+  background: #0a0a0a;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+/* Hover del boton */
+.boton-super:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 2.5rem rgba(0, 255, 255, 0.2);
+}
+
+/* Estado deshabilitado */
+.boton-super:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Movimiento del icono al hover */
+.boton-super:hover .boton-super__flecha {
+  transform: translateX(0.4rem);
+}
+
+/* Contenedor del icono */
+.boton-super__icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icono de flecha */
+.boton-super__flecha {
+  width: 1.4rem;
+  height: 1.4rem;
+  transition: transform 0.3s ease;
+  color: #00ffff;
+}
+
+/* Animacion del borde giratorio */
+@keyframes boton-super-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

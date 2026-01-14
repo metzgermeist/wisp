@@ -1,0 +1,129 @@
+/* Contenedor fijo de navegacion */
+.barra {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: linear-gradient(180deg, rgba(4, 17, 36, 0.95), rgba(4, 17, 36, 0.75));
+  backdrop-filter: blur(1rem);
+  border-bottom: 0.1rem solid rgba(38, 116, 188, 0.28);
+}
+
+/* Layout interno de la barra */
+.barra__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem clamp(1.6rem, 4vw, 4rem);
+}
+
+/* Lista de enlaces */
+.barra__lista {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.45rem;
+  background: rgba(4, 17, 36, 0.92);
+  border-radius: var(--radius-pill);
+  border: 0.08rem solid rgba(38, 116, 188, 0.32);
+  box-shadow: 0 1.2rem 2.6rem rgba(4, 17, 36, 0.6);
+}
+
+/* Enlace del menu */
+.barra__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.95rem;
+  color: #5598d3;
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius-pill);
+  position: relative;
+  z-index: 1;
+  transition: color var(--transition-base), transform 0.35s ease;
+}
+
+/* Estado activo y hover del enlace */
+.barra__link--active,
+.barra__link:hover {
+  color: #bedaf3;
+}
+
+.barra__link:hover {
+  transform: translateY(-0.03rem);
+}
+
+/* Haz de luz base (activo anima desde opacidad 0) */
+.barra__link::before,
+.barra__link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  opacity: 0;
+  transform: translateX(-50%) translateY(0.15rem);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+
+.barra__link::before {
+  top: -0.65rem;
+  width: min(70%, 4.2rem);
+  height: 0.4rem;
+  background: #bedaf3;
+  border-radius: 999px;
+  box-shadow: 0 0 1rem rgba(85, 152, 211, 0.6);
+}
+
+.barra__link::after {
+  top: -0.1rem;
+  width: min(70%, 4.2rem);
+  height: 2.2rem;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(190, 218, 243, 0.45) 0%,
+    rgba(85, 152, 211, 0.2) 38%,
+    rgba(38, 116, 188, 0) 70%
+  );
+  filter: blur(0.18rem);
+  z-index: -1;
+}
+
+.barra__link--active::before,
+.barra__link--active::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Ajuste de CTA en el header */
+.barra__cta {
+  font-size: 0.85rem;
+  padding: 0.6rem 1.4rem;
+}
+
+/* Icono de desplegable */
+.barra__chevron {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+/* Ajustes responsive */
+@media (max-width: 50rem) {
+  .barra__nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .barra__lista {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .barra__link--active::before,
+  .barra__link--active::after {
+    content: none;
+  }
+}

@@ -1,0 +1,285 @@
+/* Contenedor 3D con perspectiva */
+.card3d-parent {
+  width: 18.125rem;
+  height: 18.75rem;
+  perspective: 62.5rem;
+}
+
+/* Tarjeta principal */
+.card3d {
+  height: 100%;
+  border-radius: 3.125rem;
+  background: linear-gradient(135deg, #1fafce 0%, #e952da 100%);
+  transition: all 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  box-shadow: rgba(5, 71, 17, 0) 2.5rem 3.125rem 1.5625rem -2.5rem,
+    rgba(5, 71, 17, 0.2) 0 1.5625rem 1.5625rem -0.3125rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Capa de vidrio */
+.card3d__glass {
+  transform-style: preserve-3d;
+  position: absolute;
+  inset: 0.5rem;
+  border-radius: 3.4375rem;
+  border-top-right-radius: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.349) 0%,
+    rgba(255, 255, 255, 0.815) 100%
+  );
+  transform: translate3d(0, 0, 1.5625rem);
+  border-left: 0.0625rem solid #ffffff;
+  border-bottom: 0.0625rem solid #ffffff;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Contenido textual */
+.card3d__content {
+  padding: 6.25rem 3.75rem 0 1.875rem;
+  transform: translate3d(0, 0, 1.625rem);
+}
+
+/* Titulo de la tarjeta */
+.card3d__title {
+  display: block;
+  color: #39002c;
+  font-weight: 900;
+  font-size: 1.25rem;
+}
+
+/* Texto descriptivo */
+.card3d__text {
+  display: block;
+  color: rgba(57, 0, 44, 0.72);
+  font-size: 0.9375rem;
+  margin-top: 1.25rem;
+}
+
+/* Zona inferior con acciones */
+.card3d__bottom {
+  padding: 0.625rem 0.75rem;
+  transform-style: preserve-3d;
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translate3d(0, 0, 1.625rem);
+}
+
+/* CTA con flecha */
+.card3d__more {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  justify-content: flex-end;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+/* Hover del CTA */
+.card3d__more:hover {
+  transform: translate3d(0, 0, 0.625rem);
+}
+
+/* Texto del CTA */
+.card3d__more-button {
+  background: none;
+  border: none;
+  color: #800080;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+/* Icono del CTA */
+.card3d__more-icon {
+  fill: none;
+  stroke: #800080;
+  stroke-width: 0.1875rem;
+  max-height: 0.9375rem;
+}
+
+/* Contenedor de botones sociales */
+.card3d__social {
+  display: flex;
+  gap: 0.625rem;
+  transform-style: preserve-3d;
+}
+
+/* Boton social */
+.card3d__social-button {
+  width: 1.875rem;
+  aspect-ratio: 1;
+  padding: 0.3125rem;
+  background: rgb(255, 255, 255);
+  border-radius: 50%;
+  border: none;
+  display: grid;
+  place-content: center;
+  box-shadow: rgba(5, 71, 17, 0.5) 0 0.4375rem 0.3125rem -0.3125rem;
+  text-decoration: none;
+}
+
+/* Delay del primer boton */
+.card3d__social-button--1 {
+  transition: transform 0.2s ease-in-out 0.4s, box-shadow 0.2s ease-in-out 0.4s;
+}
+
+/* Delay del segundo boton */
+.card3d__social-button--2 {
+  transition: transform 0.2s ease-in-out 0.6s, box-shadow 0.2s ease-in-out 0.6s;
+}
+
+/* Icono social */
+.card3d__svg {
+  width: 0.9375rem;
+  fill: #800080;
+}
+
+/* Hover del boton social */
+.card3d__social-button:hover {
+  background: #000000;
+}
+
+/* Hover del icono social */
+.card3d__social-button:hover .card3d__svg {
+  fill: #ffffff;
+}
+
+/* Estado activo del boton social */
+.card3d__social-button:active {
+  background: rgb(255, 234, 0);
+}
+
+/* Estado activo del icono social */
+.card3d__social-button:active .card3d__svg {
+  fill: #000000;
+}
+
+/* Contenedor de circulos */
+.card3d__logo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform-style: preserve-3d;
+}
+
+/* Circulo base */
+.card3d__circle {
+  display: block;
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  box-shadow: rgba(100, 100, 111, 0.2) -0.625rem 0.625rem 1.25rem 0;
+  backdrop-filter: blur(0.3125rem);
+  background: rgba(233, 82, 218, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Circulo mas grande */
+.card3d__circle--1 {
+  width: 10.625rem;
+  transform: translate3d(0, 0, 1.25rem);
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+/* Segundo circulo */
+.card3d__circle--2 {
+  width: 8.75rem;
+  transform: translate3d(0, 0, 2.5rem);
+  top: 0.625rem;
+  right: 0.625rem;
+  transition-delay: 0.4s;
+}
+
+/* Tercer circulo */
+.card3d__circle--3 {
+  width: 6.875rem;
+  transform: translate3d(0, 0, 3.75rem);
+  top: 1.0625rem;
+  right: 1.0625rem;
+  transition-delay: 0.8s;
+}
+
+/* Cuarto circulo */
+.card3d__circle--4 {
+  width: 5rem;
+  transform: translate3d(0, 0, 5rem);
+  top: 1.4375rem;
+  right: 1.4375rem;
+  transition-delay: 1.2s;
+}
+
+/* Circulo con icono */
+.card3d__circle--5 {
+  width: 3.125rem;
+  transform: translate3d(0, 0, 6.25rem);
+  top: 1.875rem;
+  right: 1.875rem;
+  display: grid;
+  place-content: center;
+  transition-delay: 1.6s;
+}
+
+/* Contenedor del icono */
+.card3d__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+/* Tamano del icono */
+.card3d__icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Hover del contenedor principal */
+.card3d-parent:hover .card3d {
+  transform: rotate3d(1, 1, 0, 30deg);
+  box-shadow: rgba(5, 71, 17, 0.3) 1.875rem 3.125rem 1.5625rem -2.5rem,
+    rgba(5, 71, 17, 0.1) 0 1.5625rem 1.875rem 0,
+    rgba(233, 82, 218, 0.45) 0 0 2.5rem;
+}
+
+/* Hover de los botones sociales */
+.card3d-parent:hover .card3d .card3d__social-button {
+  transform: translate3d(0, 0, 3.125rem);
+  box-shadow: rgba(5, 71, 17, 0.2) -0.3125rem 1.25rem 0.625rem 0;
+}
+
+/* Profundidad extra del segundo circulo */
+.card3d-parent:hover .card3d .card3d__circle--2 {
+  transform: translate3d(0, 0, 3.75rem);
+}
+
+/* Profundidad extra del tercer circulo */
+.card3d-parent:hover .card3d .card3d__circle--3 {
+  transform: translate3d(0, 0, 5rem);
+}
+
+/* Profundidad extra del cuarto circulo */
+.card3d-parent:hover .card3d .card3d__circle--4 {
+  transform: translate3d(0, 0, 6.25rem);
+}
+
+/* Profundidad extra del circulo con icono */
+.card3d-parent:hover .card3d .card3d__circle--5 {
+  transform: translate3d(0, 0, 7.5rem);
+}
+
+/* Variantes de tono */
+.card3d--violet,
+.card3d--coral,
+.card3d--blue {
+  background: linear-gradient(135deg, #1fafce 0%, #e952da 100%);
+}

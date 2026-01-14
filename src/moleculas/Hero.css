@@ -1,0 +1,93 @@
+/* Contenedor principal del hero */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: clamp(6rem, 12vw, 8.5rem);
+  padding-left: clamp(1.6rem, 4vw, 5rem);
+  padding-right: clamp(1.6rem, 4vw, 5rem);
+  min-height: 105vh;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background-image: linear-gradient(120deg, rgba(5, 9, 19, 0.92), rgba(5, 9, 19, 0.6)),
+    url('../assets/img/hero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Bloque de texto del hero */
+.hero__contenido {
+  max-width: 34rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Texto superior */
+.hero__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.75rem;
+  color: rgba(154, 185, 255, 0.7);
+  margin: 0;
+}
+
+/* Titulo principal */
+.hero__titulo {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  line-height: 1.05;
+}
+
+/* Resaltado de la segunda linea */
+.hero__titulo--resaltado {
+  display: block;
+  color: var(--color-accent);
+}
+
+/* Texto de descripcion */
+.hero__texto {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+}
+
+/* Contenedor de botones */
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Imagen principal del hero */
+.hero__media {
+  margin: 0;
+  width: min(100%, 36rem);
+  background: radial-gradient(circle at top, rgba(75, 182, 255, 0.2), transparent 70%);
+  padding: 1.2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+
+/* Ajustes para pantallas grandes */
+@media (min-width: 60rem) {
+  .hero {
+    flex-direction: row;
+  }
+
+  .hero__media {
+    width: min(100%, 40rem);
+  }
+}
+
+/* Respeta preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .hero__media img {
+    transform: none;
+  }
+}

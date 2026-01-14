@@ -1,0 +1,55 @@
+/* Contenedor de la seccion sobre nosotros */
+.sobre {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: min(100%, 72rem);
+  margin: 0 auto;
+}
+
+/* Columna de texto */
+.sobre__contenido {
+  max-width: 32rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Titulo principal */
+.sobre__titulo {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+/* Texto institucional */
+.sobre__texto {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+/* Contenedor de imagen */
+.sobre__media {
+  margin: 0;
+  width: min(100%, 36rem);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(75, 182, 255, 0.2), rgba(58, 124, 255, 0.4));
+  padding: 0.25rem;
+  box-shadow: 0 1.4rem 2.6rem rgba(5, 12, 26, 0.35);
+}
+
+/* Imagen interna */
+.sobre__media img {
+  width: 100%;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+/* Ajustes para pantallas grandes */
+@media (min-width: 60rem) {
+  .sobre {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

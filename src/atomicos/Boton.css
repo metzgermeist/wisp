@@ -1,0 +1,80 @@
+/* Base del boton */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--radius-pill);
+  border: 0.1rem solid transparent;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform var(--transition-base), box-shadow var(--transition-base),
+    background var(--transition-base), border-color var(--transition-base),
+    color var(--transition-base);
+}
+
+/* Variante primaria */
+.boton--primary {
+  background: linear-gradient(135deg, #3a7cff, #4bb6ff);
+  color: #f5fbff;
+  box-shadow: 0 1.2rem 2.8rem rgba(58, 124, 255, 0.35);
+}
+
+/* Hover de la variante primaria */
+.boton--primary:hover {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 1.5rem 3.4rem rgba(58, 124, 255, 0.5);
+}
+
+/* Estado activo */
+.boton:active {
+  transform: translateY(0.1rem);
+}
+
+/* Variante ghost */
+.boton--ghost {
+  background: rgba(12, 22, 46, 0.6);
+  color: var(--color-text);
+  border-color: rgba(154, 185, 255, 0.25);
+}
+
+/* Hover de la variante ghost */
+.boton--ghost:hover {
+  border-color: rgba(154, 185, 255, 0.55);
+  color: #ffffff;
+}
+
+/* Variante outline */
+.boton--outline {
+  background: transparent;
+  color: var(--color-text);
+  border-color: rgba(154, 185, 255, 0.35);
+}
+
+/* Hover de la variante outline */
+.boton--outline:hover {
+  border-color: rgba(75, 182, 255, 0.7);
+  color: #ffffff;
+}
+
+/* Tamano pequeno */
+.boton--sm {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+}
+
+/* Tamano grande */
+.boton--lg {
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+}
+
+/* Estado deshabilitado */
+.boton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}

@@ -1,0 +1,44 @@
+/* Contenedor del campo */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+/* Etiqueta del campo */
+.campo__label {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Control de entrada */
+.campo__control {
+  width: 100%;
+  border-radius: 0.8rem;
+  border: 0.1rem solid rgba(120, 150, 220, 0.25);
+  padding: 0.8rem 1rem;
+  background: rgba(10, 18, 40, 0.6);
+  color: var(--color-text);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* Placeholder del control */
+.campo__control::placeholder {
+  color: rgba(180, 194, 222, 0.7);
+}
+
+/* Estado de foco */
+.campo__control:focus {
+  outline: none;
+  border-color: rgba(75, 182, 255, 0.8);
+  box-shadow: 0 0 0 0.15rem rgba(75, 182, 255, 0.2);
+}
+
+/* Estado invalido */
+.campo__control[aria-invalid='true'] {
+  border-color: rgba(255, 120, 120, 0.7);
+  box-shadow: 0 0 0 0.15rem rgba(255, 120, 120, 0.15);
+}
