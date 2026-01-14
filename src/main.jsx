@@ -10,7 +10,7 @@ const imagenesClave = [
   new URL('./assets/img/hero.png', import.meta.url).href,
   new URL('./assets/img/back.png', import.meta.url).href,
   new URL('./assets/img/nosotros.png', import.meta.url).href,
-  new URL('./assets/img/splashWisp (1).png', import.meta.url).href,
+  new URL('./assets/img/robotwisp.png', import.meta.url).href,
 ]
 
 function precargarImagen(src) {

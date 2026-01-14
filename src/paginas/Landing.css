@@ -141,6 +141,12 @@
   }
 }
 
+@media (max-width: 50rem) {
+  .landing__fondo-estrellas .stars {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .landing__fondo-estrellas .star {
     animation: none;
