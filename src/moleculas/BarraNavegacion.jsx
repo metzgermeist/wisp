@@ -149,15 +149,17 @@ function BarraNavegacion({ elementos, idActivo, accionPrincipal }) {
           <Lista className="barra__lista">
             {elementos.map(renderizarElementoNavegacion)}
           </Lista>
-          {/* CTA principal */}
-          <BotonSuper
-            enlace={accionPrincipal.enlace}
-            clase="barra__cta"
-            mostrarIcono={false}
-            onClick={cerrarMenu}
-          >
-            {accionPrincipal.etiqueta}
-          </BotonSuper>
+          {/* CTA principal (solo desktop) */}
+          {!menuEsMovil ? (
+            <BotonSuper
+              enlace={accionPrincipal.enlace}
+              clase="barra__cta"
+              mostrarIcono={false}
+              onClick={cerrarMenu}
+            >
+              {accionPrincipal.etiqueta}
+            </BotonSuper>
+          ) : null}
         </div>
       </nav>
     </header>

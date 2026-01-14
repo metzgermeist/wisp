@@ -65,3 +65,10 @@
   display: flex;
   justify-content: center;
 }
+
+/* === Mobile (<= 40rem) === */
+@media (max-width: 40rem) {
+  .soluciones::before {
+    content: none;
+  }
+}
